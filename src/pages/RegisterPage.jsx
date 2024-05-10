@@ -1,12 +1,39 @@
 import { Link } from 'react-router-dom';
-import logo from '../assets/logo.jpg'
+import logo from '../assets/logo.jpg';
+import { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
+import axios from 'axios';
 
 const RegisterPage = () => {
+    const { user, createUser } = useContext(AuthContext);
+
+    const handleSignUp = e => {
+        e.preventDefault();
+
+        const form = e.target;
+
+        const email = form.email.value;
+        const password = form.password.value;
+
+        createUser(email, password)
+            .then((res) => {
+                const lastLogiIn = res.user.metadata.lastSignInTime;
+                const user = { email, password, lastLogiIn};
+                // axios.post('http://localhost:5300/user', user)
+                //     .then(res => {
+                //         console.log(res.data);
+                //     })
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+    }
+
     return (
         <div>
             <section className="bg-white dark:bg-gray-900">
                 <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
-                    <form className="w-full max-w-md">
+                    <form onSubmit={handleSignUp} className="w-full max-w-md">
                         <div className="flex justify-center mx-auto">
                             <img className="w-auto h-7 sm:h-8" src={logo} alt="" />
                         </div>
@@ -24,7 +51,7 @@ const RegisterPage = () => {
                                 </svg>
                             </span>
 
-                            <input type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Username" />
+                            <input name='name' type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Username" />
                         </div>
 
                         <div className='mt-6 relative'>
@@ -32,7 +59,7 @@ const RegisterPage = () => {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                             </svg>
 
-                            <input type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="PhotoURL" />
+                            <input name='PhotoURL' type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="PhotoURL" />
                         </div>
 
                         <div className="relative flex items-center mt-6">
@@ -42,7 +69,7 @@ const RegisterPage = () => {
                                 </svg>
                             </span>
 
-                            <input type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
+                            <input name='email' type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
                         </div>
 
                         <div className="relative flex items-center mt-4">
@@ -52,17 +79,7 @@ const RegisterPage = () => {
                                 </svg>
                             </span>
 
-                            <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
-                        </div>
-
-                        <div className="relative flex items-center mt-4">
-                            <span className="absolute">
-                                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mx-3 text-gray-300 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                                </svg>
-                            </span>
-
-                            <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Confirm Password" />
+                            <input name='password' type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
                         </div>
 
                         <div className="mt-6">

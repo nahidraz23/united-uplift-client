@@ -1,12 +1,35 @@
 import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg'
+import { useContext } from 'react';
+import { AuthContext } from '../providers/AuthProvider';
 
 const LoginPage = () => {
+
+    const {signIn} = useContext(AuthContext);
+
+    const handleSignIn = e => {
+        e.preventDefault();
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        signIn(email, password)
+        .then(res => {
+            const user = res.user;
+            console.log(user)
+        })
+        .catch(error => {
+            console.log(error.message)
+        })
+
+    }
+
     return (
         <div>
             <section className="bg-white dark:bg-gray-900">
                 <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
-                    <form className="w-full max-w-md">
+                    <form onSubmit={handleSignIn} className="w-full max-w-md">
                         <img className="w-auto h-7 sm:h-8" src={logo} alt=""/>
 
                             <h1 className="mt-3 text-2xl font-semibold text-gray-800 capitalize sm:text-3xl dark:text-white">sign In</h1>
@@ -18,7 +41,7 @@ const LoginPage = () => {
                                     </svg>
                                 </span>
 
-                                <input type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
+                                <input name='email' type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address"/>
                             </div>
 
                             <div className="relative flex items-center mt-4">
@@ -28,7 +51,7 @@ const LoginPage = () => {
                                     </svg>
                                 </span>
 
-                                <input type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
+                                <input name='password' type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password"/>
                             </div>
 
                             <div className="mt-6">
