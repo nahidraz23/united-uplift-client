@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
 import axios from 'axios';
 
 const RegisterPage = () => {
@@ -15,10 +16,22 @@ const RegisterPage = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        if (password.length < 6) {
+            toast.error("Password length should be more than 6 charecters long.");
+            return;
+        }
+        if (!/^(?=.*[a-z]).{6,}$/.test(password)) {
+            return toast.error("Your password should have at least 1 lowercase letter")
+        }
+        if (!/^(?=.*[A-Z]).{6,}$/.test(password)) {
+            toast.error("Your password should have at least 1 uppercase letter");
+            return;
+        }
+
         createUser(email, password)
             .then((res) => {
                 const lastLogiIn = res.user.metadata.lastSignInTime;
-                const user = { email, password, lastLogiIn};
+                const user = { email, password, lastLogiIn };
                 // axios.post('http://localhost:5300/user', user)
                 //     .then(res => {
                 //         console.log(res.data);
@@ -69,7 +82,7 @@ const RegisterPage = () => {
                                 </svg>
                             </span>
 
-                            <input name='email' type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
+                            <input required name='email' type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
                         </div>
 
                         <div className="relative flex items-center mt-4">
@@ -79,7 +92,7 @@ const RegisterPage = () => {
                                 </svg>
                             </span>
 
-                            <input name='password' type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
+                            <input required name='password' type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
                         </div>
 
                         <div className="mt-6">
@@ -96,6 +109,14 @@ const RegisterPage = () => {
                     </form>
                 </div>
             </section>
+            <Toaster
+                position="bottom-right"
+                toastOptions={
+                    {
+                        duration: 2000,
+                    }
+                }
+            />
         </div>
     );
 };

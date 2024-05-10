@@ -1,16 +1,17 @@
 import 'flowbite';
 import logo from '../../../assets/logo.jpg';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
+
 
 const Navbar = () => {
     const { user, signOutUser } = useContext(AuthContext)
 
     const navLinks = (
         <div className='flex flex-col md:flex-row gap-5'>
-            <Link to={"/"}>Home</Link>
-            <Link to={"/needVolunteer"}>Need Volunteer</Link>
+            <NavLink to={"/"} className={({ isActive }) => (isActive ? "isActive" : "")}>Home</NavLink>
+            <NavLink to={"/needVolunteer"} className={({ isActive }) => (isActive ? "isActive" : "")}>Need Volunteer</NavLink>
         </div>
     )
 
@@ -24,7 +25,7 @@ const Navbar = () => {
         })
     }
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-red-100">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
