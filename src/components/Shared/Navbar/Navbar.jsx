@@ -11,12 +11,26 @@ const Navbar = () => {
         </div>
     )
     return (
-        <nav className="bg-white border-gray-200 dark:bg-gray-900">
-            <div className="flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-                    <img src={logo} className="h-8" alt="Flowbite Logo" />
-                    <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">United Uplift</span>
-                </a>
+        <div className="navbar bg-base-100">
+            <div className="navbar-start">
+                <div className="dropdown">
+                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                    </div>
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        {
+                            navLinks
+                        }
+                    </ul>
+                </div>
+                <a className="text-xl">United Uplift</a>
+            </div>
+            <div className="navbar-center hidden lg:flex">
+                {
+                    navLinks
+                }
+            </div>
+            <div className="navbar-end flex gap-4">
                 <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
                     <button type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                         <span className="sr-only">Open user menu</span>
@@ -50,16 +64,12 @@ const Navbar = () => {
                         </svg>
                     </button>
                 </div>
-                <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-user">
-                    <ul className="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                        {
-                            navLinks
-                        }
-                    </ul>
+                <div>
+                    <Link to={'/login'}><button className='btn'>Login</button></Link>
                 </div>
-            </div>
-        </nav>
 
+            </div>
+        </div>
     );
 };
 
