@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-moderno{
+  font-family: "MuseoModerno", sans-serif;
+}
+
+.font-fredoka{
+  font-family: "Fredoka", sans-serif;
+}
 
 .isActive {
   border-bottom: 2px solid red;

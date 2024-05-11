@@ -6,6 +6,7 @@ import NeedVolunteer from "../pages/NeedVolunteer";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import AddVoulunteer from "../pages/AddVoulunteer";
+import VolunteerDetails from "../pages/VolunteerDetails";
 
 
 const router = createBrowserRouter([
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
             {
                 path: '/addvolunteer',
                 element: <AddVoulunteer></AddVoulunteer>
+            },
+            {
+                path: '/volunteerDetails/:id',
+                element: <VolunteerDetails></VolunteerDetails>,
+                loader: ({params}) => fetch(`http://localhost:5300/volunteers/${params.id}`)
             }
         ]
     }
