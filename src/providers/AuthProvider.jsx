@@ -1,6 +1,7 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, reauthenticateWithCredential, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged,  signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebaseConfig";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -8,6 +9,14 @@ const auth = getAuth(app);
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [loadedUser, setLoadedUser] = useState(null);
+
+    const url = `http://localhost:5300/users?email=${user?.email}`;
+
+    useEffect(() => {
+        axios.get(url)
+        .then(res => setLoadedUser(res.data));
+    }, [url])
 
     const createUser = (email, password) => {
         setLoading(true);
@@ -51,6 +60,7 @@ const AuthProvider = ({children}) => {
         signIn,
         googleLogin,
         signOutUser,
+        loadedUser,
     }
 
     return (

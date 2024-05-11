@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home";
 import NeedVolunteer from "../pages/NeedVolunteer";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import AddVoulunteer from "../pages/AddVoulunteer";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: '/registration',
                 element: <RegisterPage></RegisterPage>
+            },
+            {
+                path: '/addvolunteer',
+                element: <AddVoulunteer></AddVoulunteer>
             }
         ]
     }
