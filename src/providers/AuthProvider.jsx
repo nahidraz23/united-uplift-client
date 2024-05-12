@@ -14,8 +14,12 @@ const AuthProvider = ({children}) => {
     const url = `http://localhost:5300/users?email=${user?.email}`;
 
     useEffect(() => {
+        setLoading(true);
         axios.get(url)
-        .then(res => setLoadedUser(res.data));
+        .then(res => {
+            setLoadedUser(res.data);
+            setLoading(false);
+        });
     }, [url])
 
     const createUser = (email, password) => {
