@@ -12,7 +12,7 @@ const VolunteerDetails = () => {
             </div>
             <div className="flex flex-col md:flex-row justify-center items-center">
                 <div className="">
-                    <img src={thumbnail} alt="" className="card card-compact md:h-[646px]" />
+                    <img src={thumbnail} alt="" className="card card-compact md:h-[630px]" />
                 </div>
                 <div className="card bg-base-100 shadow-xl image-full mt-5 md:mx-40 md:w-1/3">
                     <figure className="w-full"><img src="https://images.unsplash.com/photo-1557682250-33bd709cbe85?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fGFic3RyYWN0JTIwYmFja2dyb3VuZHxlbnwwfDB8MHx8fDI%3D" alt="Shoes" className="w-full " /></figure>

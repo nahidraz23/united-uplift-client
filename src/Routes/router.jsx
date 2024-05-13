@@ -22,7 +22,8 @@ const router = createBrowserRouter([
             },
             {
                 path: '/needVolunteer',
-                element: <NeedVolunteer></NeedVolunteer>
+                element: <NeedVolunteer></NeedVolunteer>,
+                loader: () => fetch('http://localhost:5300/volunteers')
             },
             {
                 path: '/login',
