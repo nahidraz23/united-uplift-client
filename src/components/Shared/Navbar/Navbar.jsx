@@ -68,7 +68,7 @@ const Navbar = () => {
                             </div>
                             <ul tabIndex={0} className="dropdown-content z-10 menu p-2 shadow bg-base-100 rounded-box w-52 space-y-1">
                                 <Link to={'/addvolunteer'} className='text-center btn btn-sm'>Add Volunteer Post</Link>
-                                <Link className='text-center btn btn-sm'>Manage My Post</Link>
+                                <Link to={'/managemypost'} className='text-center btn btn-sm'>Manage My Post</Link>
                                 <button onClick={handleSignOut} className='text-center btn btn-sm'>Sign Out</button>
                             </ul>
                         </div>
