@@ -19,11 +19,11 @@ const LoginPage = () => {
 
         signIn(email, password)
             .then((res) => {
-                const user = res.user;
-                console.log(user);
+                toast.success(" Logged in as: " + res?.user?.email);
+                navigate(location?.state ? location.state : '/');
             })
             .catch((error) => {
-                console.log(error.message);
+                toast.error(error.message);
             });
     };
 

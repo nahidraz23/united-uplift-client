@@ -2,9 +2,10 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 const ManageMyPost = () => {
-    const { user, setLoading, loadedUser} = useContext(AuthContext);
+    const { user, setLoading, loadedUser } = useContext(AuthContext);
 
     const [myPost, setMyPost] = useState([]);
     const [myRequest, setMyRequest] = useState([]);
@@ -32,6 +33,63 @@ const ManageMyPost = () => {
             })
     }, [myRequestURL, setLoading])
 
+    // Delete my volunteer post
+    const handlePostDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5300/volunteers/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            const remaining = myPost.filter(item => item._id !== id);
+                            setMyPost(remaining);
+                        }
+                    })
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your request has been deleted successfull.",
+                    icon: "success"
+                });
+            }
+        });
+    }
+
+    // Cancel request handle
+    const handleCancelRequest = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`http://localhost:5300/bevolunteer/${id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            const remaining = myRequest.filter(item => item._id !== id);
+                            setMyRequest(remaining);
+                        }
+                    })
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your request has been deleted successfull.",
+                    icon: "success"
+                });
+            }
+        });
+
+    }
+
     return (
         <div className="space-y-10">
             {/* My Post Section */}
@@ -57,9 +115,7 @@ const ManageMyPost = () => {
                                         <th scope="col" className="px-6 py-3">
                                             Deadline
                                         </th>
-                                        <th scope="col" className="px-6 py-3">
-                                            <span className="sr-only">Edit</span>
-                                        </th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -80,7 +136,7 @@ const ManageMyPost = () => {
                                                 </td>
                                                 <td className="px-6 py-4 text-right space-x-2">
                                                     <Link to={`/updatepage/${post._id}`}><button className="btn btn-sm font-medium text-blue-600 dark:text-blue-500 ">Update</button></Link>
-                                                    <button className="btn btn-sm font-medium text-red-600 dark:text-red-500 ">Delete</button>
+                                                    <button onClick={() => handlePostDelete(post._id)} className="btn btn-sm font-medium text-red-600 dark:text-red-500 ">Delete</button>
                                                 </td>
                                             </tr>
                                         </>)
@@ -116,7 +172,10 @@ const ManageMyPost = () => {
                                             Deadline
                                         </th>
                                         <th scope="col" className="px-6 py-3">
-                                            <span className="sr-only">Edit</span>
+                                            Status
+                                        </th>
+                                        <th scope="col" className="px-16 py-3 text-end">
+                                            Action
                                         </th>
                                     </tr>
                                 </thead>
@@ -136,8 +195,11 @@ const ManageMyPost = () => {
                                                 <td className="px-6 py-4">
                                                     {post.deadline}
                                                 </td>
+                                                <td className="px-6 py-4">
+                                                    {post.status}
+                                                </td>
                                                 <td className="px-6 py-4 text-right">
-                                                    <button className="btn btn-sm font-medium text-blue-600 dark:text-blue-500 ">Cancel Request</button>
+                                                    <button onClick={() => handleCancelRequest(post._id)} className="btn btn-sm font-medium text-blue-600 dark:text-blue-500 ">Cancel Request</button>
                                                 </td>
                                             </tr>
                                         </>)

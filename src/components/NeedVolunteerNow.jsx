@@ -19,7 +19,7 @@ const NeedVolunteerNow = () => {
             </div>
             <div className="my-10 grid md:grid-cols-2 justify-items-center gap-6">
                 {
-                    volunteers.map((volunteer, index) => <VolenteerCard key={index} volunteer={volunteer}></VolenteerCard>)
+                    volunteers.slice(0,6).map((volunteer, index) => <VolenteerCard key={index} volunteer={volunteer}></VolenteerCard>)
                 }
             </div>
         </div>

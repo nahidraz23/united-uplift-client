@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import DatePicker from "react-datepicker";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const UpdatePage = () => {
     const loadedData = useLoaderData();
@@ -28,7 +29,16 @@ const UpdatePage = () => {
         const updatedVolunteer = { thumbnail, title, category, location, noOfVolunteer, deadline, email, name, description };
 
         axios.put(`http://localhost:5300/volunteers/${_id}`, updatedVolunteer)
-        .then(res => console.log(res.data))
+        .then((res) => {
+            if(res.data.modifiedCount > 0){
+                Swal.fire({
+                    title: "Success",
+                    text: "Post updated successfully",
+                    icon: "success",
+                    confirmButtonText: "ok",
+                });
+            }
+        })
     }
 
     return (

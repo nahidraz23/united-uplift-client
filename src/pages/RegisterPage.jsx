@@ -6,6 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Player } from '@lottiefiles/react-lottie-player';
 import axios from 'axios';
 
+
 const RegisterPage = () => {
     const { user, createUser } = useContext(AuthContext);
 
@@ -41,12 +42,12 @@ const RegisterPage = () => {
                 const lastLogiIn = res.user.metadata.lastSignInTime;
                 const user = { email, displayName, photoURL, password, lastLogiIn };
                 axios.post('http://localhost:5300/users', user)
-                    .then(res => {
-                        console.log(res.data);
+                    .then((res) => {
+                        toast.success("Registration successfull.");
                     })
             })
             .catch(error => {
-                console.log(error.message)
+                toast.error(error.message);
             })
     }
      return (
