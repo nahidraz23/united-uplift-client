@@ -5,6 +5,7 @@ import { AuthContext } from '../providers/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
 import { Player } from '@lottiefiles/react-lottie-player';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 
 const RegisterPage = () => {
@@ -52,6 +53,11 @@ const RegisterPage = () => {
     }
      return (
         <div>
+            <div>
+                <Helmet>
+                    <title>United Uplift | Register</title>
+                </Helmet>
+            </div>
             <section className="bg-white dark:bg-gray-900">
                 <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
                     <form onSubmit={handleSignUp} className="w-full">

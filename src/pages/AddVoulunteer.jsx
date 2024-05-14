@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { AuthContext } from "../providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const AddVoulunteer = () => {
     const { user, loadedUser } = useContext(AuthContext)
@@ -46,6 +47,11 @@ const AddVoulunteer = () => {
 
     return (
         <div className="my-10">
+            <div>
+                <Helmet>
+                    <title>United Uplift | Add Post</title>
+                </Helmet>
+            </div>
             <div className='mt-20'>
                 <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
                     <div>

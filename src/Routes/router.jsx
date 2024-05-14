@@ -10,6 +10,7 @@ import VolunteerDetails from "../pages/VolunteerDetails";
 import BeVolunter from "../pages/BeVolunter";
 import ManageMyPost from "../pages/ManageMyPost";
 import UpdatePage from "../pages/UpdatePage";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -37,26 +38,36 @@ const router = createBrowserRouter([
             },
             {
                 path: '/addvolunteer',
-                element: <AddVoulunteer></AddVoulunteer>
+                element: <PrivateRoute>
+                    <AddVoulunteer></AddVoulunteer>
+                </PrivateRoute>
             },
             {
                 path: '/volunteerDetails/:id',
-                element: <VolunteerDetails></VolunteerDetails>,
-                loader: ({params}) => fetch(`http://localhost:5300/volunteers/${params.id}`)
+                element: <PrivateRoute>
+                    <VolunteerDetails></VolunteerDetails>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5300/volunteers/${params.id}`)
             },
             {
                 path: '/bevolunteer/:id',
-                element: <BeVolunter></BeVolunter>,
-                loader: ({params}) => fetch(`http://localhost:5300/volunteers/${params.id}`)
+                element: <PrivateRoute>
+                    <BeVolunter></BeVolunter>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5300/volunteers/${params.id}`)
             },
             {
                 path: '/managemypost',
-                element: <ManageMyPost></ManageMyPost>
+                element: <PrivateRoute>
+                    <ManageMyPost></ManageMyPost>
+                </PrivateRoute>
             },
             {
                 path: '/updatepage/:id',
-                element: <UpdatePage></UpdatePage>,
-                loader: ({params}) => fetch(`http://localhost:5300/volunteers/${params.id}`)
+                element: <PrivateRoute>
+                    <UpdatePage></UpdatePage>
+                </PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5300/volunteers/${params.id}`)
             }
         ]
     }

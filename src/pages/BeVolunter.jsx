@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const BeVolunter = () => {
     const { user, loadedUser } = useContext(AuthContext);
@@ -84,6 +85,11 @@ const BeVolunter = () => {
 
     return (
         <div className="my-10">
+            <div>
+                <Helmet>
+                    <title>United Uplift | Be Volunteer</title>
+                </Helmet>
+            </div>
             <div className="mt-20">
                 <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
                     <div>

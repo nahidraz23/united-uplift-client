@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Player } from "@lottiefiles/react-lottie-player";
 import toast, { Toaster } from 'react-hot-toast';
+import { Helmet } from "react-helmet-async";
 
 const LoginPage = () => {
     const { signIn, googleLogin } = useContext(AuthContext);
@@ -42,6 +43,11 @@ const LoginPage = () => {
     return (
         <div>
             <section className="bg-white dark:bg-gray-900">
+            <div>
+                <Helmet>
+                    <title>United Uplift | Login</title>
+                </Helmet>
+            </div>
                 <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
                     <form
                         onSubmit={handleSignIn}
