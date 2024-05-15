@@ -26,7 +26,7 @@ const Navbar = () => {
     }
 
     // Theme change
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 
     useEffect(() => {
         localStorage.setItem('theme', theme);
