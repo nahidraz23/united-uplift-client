@@ -62,7 +62,7 @@ const Navbar = () => {
                         <img src={logo} alt="" className='w-8' />
                     </div>
                     <div>
-                        <a className="text-xl">United Uplift</a>
+                        <a className="text-lg lg:text-xl">United Uplift</a>
                     </div>
                 </div>
             </div>

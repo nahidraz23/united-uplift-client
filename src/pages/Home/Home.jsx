@@ -5,14 +5,16 @@ import { Helmet } from "react-helmet-async";
 
 const Home = () => {
     return (
-        <div className="container mx-auto">
+        <div className="">
             <div>
                 <Helmet>
                     <title>United Uplift | Home</title>
                 </Helmet>
             </div>
+
             <Banner></Banner>
-            <div>
+
+            <div className="mt-10 container mx-auto">
                 <NeedVolunteer></NeedVolunteer>
             </div>
             {/* See more section */}
