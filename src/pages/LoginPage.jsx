@@ -5,6 +5,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { Player } from "@lottiefiles/react-lottie-player";
 import toast, { Toaster } from 'react-hot-toast';
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const LoginPage = () => {
     const { signIn, googleLogin } = useContext(AuthContext);
@@ -20,8 +21,14 @@ const LoginPage = () => {
 
         signIn(email, password)
             .then((res) => {
-                toast.success(" Logged in as: " + res?.user?.email);
-                navigate(location?.state ? location.state : '/');
+                const user = { email };
+
+                axios.post("http://localhost:5300/jwt", user)
+                    .then((res) => {
+                        toast.success(" Logged in as: " + res?.user?.email);
+                        // navigate(location?.state ? location.state : '/');
+                        console.log(res.data)
+                    })
             })
             .catch((error) => {
                 toast.error(error.message);
@@ -43,11 +50,11 @@ const LoginPage = () => {
     return (
         <div>
             <section className="bg-white dark:bg-gray-900">
-            <div>
-                <Helmet>
-                    <title>United Uplift | Login</title>
-                </Helmet>
-            </div>
+                <div>
+                    <Helmet>
+                        <title>United Uplift | Login</title>
+                    </Helmet>
+                </div>
                 <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
                     <form
                         onSubmit={handleSignIn}

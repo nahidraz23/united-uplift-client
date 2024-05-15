@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged,  signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import app from "../firebase/firebaseConfig";
 import axios from "axios";
@@ -6,7 +6,7 @@ import axios from "axios";
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [loadedUser, setLoadedUser] = useState(null);
@@ -14,12 +14,10 @@ const AuthProvider = ({children}) => {
     const url = `http://localhost:5300/users?email=${user?.email}`;
 
     useEffect(() => {
-        setLoading(true);
         axios.get(url)
-        .then(res => {
-            setLoadedUser(res.data);
-            setLoading(false);
-        });
+            .then(res => {
+                setLoadedUser(res.data);
+            });
     }, [url])
 
     const createUser = (email, password) => {
@@ -50,7 +48,7 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false)
-        }) 
+        })
 
         return () => {
             unsubscribe();
@@ -58,8 +56,8 @@ const AuthProvider = ({children}) => {
     }, [])
 
     const data = {
-        user, 
-        loading, 
+        user,
+        loading,
         createUser,
         signIn,
         googleLogin,

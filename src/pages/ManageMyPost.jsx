@@ -7,7 +7,7 @@ import { Player } from "@lottiefiles/react-lottie-player";
 import { Helmet } from "react-helmet-async";
 
 const ManageMyPost = () => {
-    const { user, setLoading, loadedUser } = useContext(AuthContext);
+    const { user} = useContext(AuthContext);
 
     const [myPost, setMyPost] = useState([]);
     const [myRequest, setMyRequest] = useState([]);
@@ -17,23 +17,19 @@ const ManageMyPost = () => {
 
     // My post 
     useEffect(() => {
-        setLoading(true)
         axios.get(myPostURL)
             .then(res => {
                 setMyPost(res.data);
-                setLoading(false);
             })
-    }, [myPostURL, setLoading])
+    }, [myPostURL])
 
     // My request
     useEffect(() => {
-        setLoading(true)
         axios.get(myRequestURL)
             .then(res => {
                 setMyRequest(res.data);
-                setLoading(false);
             })
-    }, [myRequestURL, setLoading])
+    }, [myRequestURL])
 
     // Delete my volunteer post
     const handlePostDelete = id => {
@@ -120,8 +116,8 @@ const ManageMyPost = () => {
                                 </div>
                             </>
                             :
-                            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <div className="relative overflow-x-auto shadow-md sm:rounded-lg ">
+                                <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 dark:bg-gray-700">
                                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
                                             <th scope="col" className="px-6 py-3">

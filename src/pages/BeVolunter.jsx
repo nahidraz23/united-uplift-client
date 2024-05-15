@@ -11,6 +11,7 @@ const BeVolunter = () => {
     const loadedVolunteer = useLoaderData();
 
     const {
+        _id,
         thumbnail,
         title,
         category,
@@ -60,7 +61,7 @@ const BeVolunter = () => {
         if (email === volunteerEmail) {
             Swal.fire({
                 title: "Error",
-                text: "You are the organizer of this post",
+                text: "You are the author of this post",
                 icon: "error",
                 confirmButtonText: "ok",
             });
@@ -81,7 +82,19 @@ const BeVolunter = () => {
                     }
                 }
             });
+
+            axios.put(`http://localhost:5300/bevolunteer/${_id}`)
+            .then((res) => {
+                console.log(res.data)
+            })
     }
+
+    // const handleUpdateVolunteerCount = id => {
+    //     axios.put(`http://localhost:5300/bevolunteer/${id}`)
+    //     .then((res) => {
+    //         console.log(res.data)
+    //     })
+    // }
 
     return (
         <div className="my-10">

@@ -43,7 +43,7 @@ const RegisterPage = () => {
                 const lastLogiIn = res.user.metadata.lastSignInTime;
                 const user = { email, displayName, photoURL, password, lastLogiIn };
                 axios.post('http://localhost:5300/users', user)
-                    .then((res) => {
+                    .then(() => {
                         toast.success("Registration successfull.");
                     })
             })
