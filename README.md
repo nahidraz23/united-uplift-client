@@ -3,7 +3,7 @@
 "United Uplift is your go-to platform for volunteer management, spanning healthcare, education, social services, animal welfare, disaster relief, child welfare, elderly care, and international aid. From organizing medical missions to tutoring programs, community outreach to animal rescues, we streamline the process for impactful initiatives. With our user-friendly interface, recruit and empower volunteers seamlessly across diverse causes. Join us in making a difference worldwide with United Uplift."
 
 Live Site:
-- <a href="https://united-uplift.web.app" rel="nofollow">United Uplift</a>
+- <a href="https://united-uplift.web.app" target="_blank" rel="nofollow">United Uplift</a>
 
 ## Features
 
