@@ -13,19 +13,19 @@ const ImpactStories = () => {
                     <div className="card w-96 bg-[#F7DCB9] shadow-xl md:translate-x-20">
                         <div className="card-body">
                             <h2 className="card-title">Cause That Aligns Passion</h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
+                            <p>We connect volunteers with causes that ignite their passion and drive for positive change.</p>
                         </div>
                     </div>
                     <div className="card w-96 bg-[#B5C18E] shadow-xl ">
                         <div className="card-body">
                             <h2 className="card-title">Build A Brighter Future For All</h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
+                            <p>Empowering communities to co-create a brighter future for all.</p>
                         </div>
                     </div>
                     <div className="card w-96 bg-[#F7DCB9] shadow-xl md:translate-x-20">
                         <div className="card-body">
                             <h2 className="card-title">Contribution Help Others</h2>
-                            <p>If a dog chews shoes whose shoes does he choose?</p>
+                            <p>Your contribution today helps brighten countless lives tomorrow.</p>
                         </div>
                     </div>
                 </div>

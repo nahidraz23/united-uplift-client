@@ -24,7 +24,7 @@ const Home = () => {
 
             {/* See more section */}
             <div className="flex justify-center my-10">
-                <Link to={'/needVolunteer'}><button className="btn ">See More</button></Link>
+                <Link to={'/needVolunteer'}><button className="btn rounded-full bg-[#3C5B6F] text-white hover:text-[#3C5B6F]">See More</button></Link>
             </div>
 
             <div className="my-10">
