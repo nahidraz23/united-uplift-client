@@ -34,4 +34,4 @@ Contributions are welcome! If you have any suggestions, feature requests, or bug
 - <a href="https://www.npmjs.com/package/react-spinners" rel="nofollow">React-Spinner</a>
 - <a href="https://react-tooltip.com/docs/getting-started" rel="nofollow">React Tooltip</a>
 - <a href="https://www.npmjs.com/package/react-datepicker" rel="nofollow">React Datepicker</a>
-- <a href="https://www.npmjs.com/package/@tawk.to/tawk-messenger-react" rel="nofollow">Tawk-Messenger-React/a>
+- <a href="https://www.npmjs.com/package/@tawk.to/tawk-messenger-react" rel="nofollow">Tawk-Messenger-React</a>
