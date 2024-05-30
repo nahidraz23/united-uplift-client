@@ -42,7 +42,7 @@ const RegisterPage = () => {
             .then((res) => {
                 const lastLogiIn = res.user.metadata.lastSignInTime;
                 const user = { email, displayName, photoURL, password, lastLogiIn };
-                axios.post('http://localhost:5300/users', user)
+                axios.post('https://united-uplift-server.vercel.app/users', user)
                     .then(() => {
                         toast.success("Registration successfull.");
                     })
@@ -58,7 +58,7 @@ const RegisterPage = () => {
                     <title>United Uplift | Register</title>
                 </Helmet>
             </div>
-            <section className="bg-white dark:bg-gray-900">
+            <section className="bg-white">
                 <div className="container flex items-center justify-center min-h-screen px-6 mx-auto">
                     <form onSubmit={handleSignUp} className="w-full">
                         <div className='flex flex-col md:flex-row items-center'>
@@ -71,7 +71,7 @@ const RegisterPage = () => {
                             </div>
                             <div className='flex-1 card shadow-xl p-4'>
                                 <div className="flex items-center justify-center mt-6">
-                                    <a href="#" className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white">
+                                    <a href="#" className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 ">
                                         sign up
                                     </a>
                                 </div>
@@ -83,7 +83,7 @@ const RegisterPage = () => {
                                         </svg>
                                     </span>
 
-                                    <input required name='name' type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Username" />
+                                    <input required name='name' type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Username" />
                                 </div>
 
                                 <div className='mt-6 relative'>
@@ -91,7 +91,7 @@ const RegisterPage = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
                                     </svg>
 
-                                    <input required name='photoURL' type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="PhotoURL" />
+                                    <input required name='photoURL' type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="PhotoURL" />
                                 </div>
 
                                 <div className="relative flex items-center mt-6">
@@ -101,7 +101,7 @@ const RegisterPage = () => {
                                         </svg>
                                     </span>
 
-                                    <input required name='email' type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
+                                    <input required name='email' type="email" className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11  dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Email address" />
                                 </div>
 
                                 <div className="relative flex items-center mt-4">
@@ -111,7 +111,7 @@ const RegisterPage = () => {
                                         </svg>
                                     </span>
 
-                                    <input required name='password' type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
+                                    <input required name='password' type="password" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg  dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Password" />
                                 </div>
 
                                 <div className="mt-6">

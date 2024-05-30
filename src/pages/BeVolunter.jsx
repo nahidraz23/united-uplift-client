@@ -19,7 +19,6 @@ const BeVolunter = () => {
         noOfVolunteer,
         deadline,
         email,
-        name,
         description,
     } = loadedVolunteer;
 
@@ -32,7 +31,7 @@ const BeVolunter = () => {
         const title = form.title.value;
         const category = form.category.value;
         const location = form.location.value;
-        const noOfVolunteer = form.volunteercount.value;
+        const noOfVolunteer = parseInt(form.volunteercount.value);
         const deadline = form.deadline.value;
         const email = form.email.value;
         const name = form.name.value;
@@ -67,9 +66,9 @@ const BeVolunter = () => {
             });
             return
         }
-    
+
         axios
-            .post("http://localhost:5300/bevolunteer", volunteer)
+            .post("https://united-uplift-server.vercel.app/bevolunteer", volunteer)
             .then((res) => {
                 if (email !== volunteerEmail) {
                     if (res.data.insertedId) {
@@ -83,14 +82,16 @@ const BeVolunter = () => {
                 }
             });
 
-            axios.put(`http://localhost:5300/bevolunteer/${_id}`)
+        axios.put(`https://united-uplift-server.vercel.app/bevolunteer/${_id}`, {noOfVolunteer: noOfVolunteer})
             .then((res) => {
                 console.log(res.data)
             })
+
+        console.log(volunteer)
     }
 
     // const handleUpdateVolunteerCount = id => {
-    //     axios.put(`http://localhost:5300/bevolunteer/${id}`)
+    //     axios.put(`https://united-uplift-server.vercel.app/bevolunteer/${id}`)
     //     .then((res) => {
     //         console.log(res.data)
     //     })
@@ -104,9 +105,9 @@ const BeVolunter = () => {
                 </Helmet>
             </div>
             <div className="mt-20">
-                <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+                <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md">
                     <div>
-                        <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white text-center mb-20">
+                        <h2 className="text-lg font-semibold text-black capitalize text-center mb-20">
                             Be A Volunteer
                         </h2>
                     </div>
@@ -114,7 +115,7 @@ const BeVolunter = () => {
                         <div className="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="username"
                                 >
                                     Thumbnail
@@ -124,12 +125,12 @@ const BeVolunter = () => {
                                     readOnly
                                     name="thumbnail"
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="username"
                                 >
                                     Post Title
@@ -139,13 +140,13 @@ const BeVolunter = () => {
                                     readOnly
                                     name="title"
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
 
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="emailAddress"
                                 >
                                     Category
@@ -155,13 +156,13 @@ const BeVolunter = () => {
                                     readOnly
                                     name="category"
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
 
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="password"
                                 >
                                     Location
@@ -171,13 +172,13 @@ const BeVolunter = () => {
                                     readOnly
                                     name="location"
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
 
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="passwordConfirmation"
                                 >
                                     No of volunteer needed:
@@ -187,12 +188,12 @@ const BeVolunter = () => {
                                     readOnly
                                     name="volunteercount"
                                     type="number"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
                             <div className="w-full">
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="passwordConfirmation"
                                 >
                                     Deadline
@@ -202,12 +203,12 @@ const BeVolunter = () => {
                                     readOnly
                                     name="deadline"
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="password"
                                 >
                                     Organizer Email
@@ -217,12 +218,12 @@ const BeVolunter = () => {
                                     name="email"
                                     defaultValue={email}
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="password"
                                 >
                                     Organizer Name
@@ -230,14 +231,14 @@ const BeVolunter = () => {
                                 <input
                                     readOnly
                                     name="name"
-                                    defaultValue={name}
+                                    defaultValue={user?.displayName || loadedUser[0]?.displayName}
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="password"
                                 >
                                     Volunteer Email
@@ -245,14 +246,14 @@ const BeVolunter = () => {
                                 <input
                                     readOnly
                                     name="volunteerEmail"
-                                    defaultValue={user?.email}
+                                    defaultValue={user?.email || loadedUser[0]?.email}
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="password"
                                 >
                                     Volunteer Name
@@ -262,11 +263,11 @@ const BeVolunter = () => {
                                     name="volunteerName"
                                     defaultValue={user?.displayName || loadedUser[0]?.displayName}
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
                             <div className="">
-                                <label className="text-gray-700 dark:text-gray-200">
+                                <label className="text-black ">
                                     Description
                                 </label>
                                 <textarea
@@ -275,13 +276,13 @@ const BeVolunter = () => {
                                     name="description"
                                     cols="30"
                                     rows="1"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring resize-none"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring resize-none"
                                     placeholder="Type brief description here"
                                 ></textarea>
                             </div>
                             <div>
                                 <label
-                                    className="text-gray-700 dark:text-gray-200"
+                                    className="text-black "
                                     htmlFor="password"
                                 >
                                     Status
@@ -290,13 +291,13 @@ const BeVolunter = () => {
                                     name="status"
                                     defaultValue={"Requested"}
                                     type="text"
-                                    className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
+                                    className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"
                                 />
                             </div>
                         </div>
                         <div className="mt-5">
                             <label
-                                className="text-gray-700 dark:text-gray-200"
+                                className="text-black "
                                 htmlFor="password"
                             >
                                 Suggestion
@@ -305,15 +306,13 @@ const BeVolunter = () => {
                                 name="suggestion"
                                 cols="30"
                                 rows="2"
-                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring resize-none"
+                                className="block w-full px-4 py-2 mt-2 text-black bg-white border border-gray-200 rounded-md   dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring resize-none"
                                 placeholder="Type brief description here"
                             ></input>
                         </div>
 
                         <div className="flex justify-center mt-6">
-                            <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transhtmlForm bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                                Request
-                            </button>
+                            <button className="btn px-8 py-2.5 leading-5 transition-colors duration-300 transhtmlForm rounded-full bg-[#3C5B6F] text-white hover:text-[#3C5B6F]">Request</button>
                         </div>
                     </form>
                 </section>

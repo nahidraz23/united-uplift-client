@@ -4,6 +4,7 @@ import Banner from "./Banner/Banner";
 import { Helmet } from "react-helmet-async";
 import AboutUs from "../../components/AboutUs";
 import ImpactStories from "../../components/ImpactStories";
+import LiveChat from "../../components/Shared/LiveChat";
 
 const Home = () => {
     return (
@@ -33,6 +34,9 @@ const Home = () => {
 
             <div className="my-10">
                 <ImpactStories></ImpactStories>
+            </div>
+            <div>
+                <LiveChat></LiveChat>
             </div>
         </div>
     );

@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [loadedUser, setLoadedUser] = useState(null);
 
-    const url = `http://localhost:5300/users?email=${user?.email}`;
+    const url = `https://united-uplift-server.vercel.app/users?email=${user?.email}`;
 
     useEffect(() => {
         axios.get(url)

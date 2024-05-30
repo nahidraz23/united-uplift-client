@@ -23,12 +23,13 @@ const LoginPage = () => {
             .then((res) => {
                 const user = { email };
 
-                axios.post("http://localhost:5300/jwt", user)
-                    .then((res) => {
-                        toast.success(" Logged in as: " + res?.user?.email);
-                        // navigate(location?.state ? location.state : '/');
-                        console.log(res.data)
-                    })
+                toast.success(" Logged in as: " + res?.user?.email);
+                navigate(location?.state ? location.state : '/');
+                // axios.post("https://united-uplift-server.vercel.app/jwt", user, {withCredentials: true})
+                //     .then((res) => {
+
+                //         console.log(res.data)
+                //     })
             })
             .catch((error) => {
                 toast.error(error.message);
@@ -49,7 +50,7 @@ const LoginPage = () => {
 
     return (
         <div>
-            <section className="bg-white dark:bg-gray-900">
+            <section className="bg-white">
                 <div>
                     <Helmet>
                         <title>United Uplift | Login</title>
@@ -72,7 +73,7 @@ const LoginPage = () => {
 
                             <div className="flex-1 card shadow-xl p-4">
                                 <div className="flex items-center justify-center mt-6">
-                                    <a href="#" className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400 dark:text-white">
+                                    <a href="#" className="w-1/3 pb-4 font-medium text-center text-gray-800 capitalize border-b-2 border-blue-500 dark:border-blue-400">
                                         Sign In
                                     </a>
                                 </div>
@@ -98,7 +99,7 @@ const LoginPage = () => {
                                     <input
                                         name="email"
                                         type="email"
-                                        className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                        className="block w-full py-3 text-gray-700 bg-white border rounded-lg px-11 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                         placeholder="Email address"
                                     />
                                 </div>
@@ -124,7 +125,7 @@ const LoginPage = () => {
                                     <input
                                         name="password"
                                         type="password"
-                                        className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                                        className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
                                         placeholder="Password"
                                     />
                                 </div>

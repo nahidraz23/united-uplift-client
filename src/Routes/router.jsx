@@ -26,7 +26,7 @@ const router = createBrowserRouter([
             {
                 path: '/needVolunteer',
                 element: <NeedVolunteer></NeedVolunteer>,
-                loader: () => fetch('http://localhost:5300/volunteers')
+                loader: () => fetch('https://united-uplift-server.vercel.app/volunteers')
             },
             {
                 path: '/login',
@@ -47,14 +47,14 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <VolunteerDetails></VolunteerDetails>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5300/volunteers/${params.id}`)
+                loader: ({ params }) => fetch(`https://united-uplift-server.vercel.app/volunteers/${params.id}`)
             },
             {
                 path: '/bevolunteer/:id',
                 element: <PrivateRoute>
                     <BeVolunter></BeVolunter>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5300/volunteers/${params.id}`)
+                loader: ({ params }) => fetch(`https://united-uplift-server.vercel.app/volunteers/${params.id}`)
             },
             {
                 path: '/managemypost',
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <UpdatePage></UpdatePage>
                 </PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5300/volunteers/${params.id}`)
+                loader: ({ params }) => fetch(`https://united-uplift-server.vercel.app/volunteers/${params.id}`)
             }
         ]
     }
