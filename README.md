@@ -79,8 +79,15 @@ Or using yarn:
 yarn dev
 ```
 
-Replace "your-username" and "your-repo-name" with your actual GitHub username and repository name. This section includes detailed steps for installing dependencies, setting up environment variables, and running the project.
+Replace "your-username" and "your-repo-name" with your GitHub username and repository name. This section includes detailed steps for installing dependencies, setting up environment variables, and running the project.
 
+## Build using
+- **JavaScript** 
+- **React**
+- **Tailwind**
+- **Node.js**
+- **Express.js**
+- **Mongodb**
 
 ## Features
 
