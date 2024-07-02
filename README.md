@@ -5,6 +5,83 @@
 Live Site:
 - <a href="https://united-uplift.web.app" target="_blank" rel="nofollow">United Uplift</a>
 
+## Installation
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version 14 or above)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Clone the Repository
+
+
+## Installation
+
+Follow these steps to set up the project locally.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (version 14 or above)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+```
+
+### Install Dependencies
+
+Using npm:
+
+```bash
+npm install
+```
+
+Or using yarn:
+
+```bash
+yarn
+```
+
+## Environment Variables
+
+This project requires a `.env` file for environment variables. Create a `.env` file in the root directory of your project and add the necessary variables as shown in the `.env.example` file.
+
+### Create a `.env` File
+
+```bash
+cp .env.example .env
+```
+
+Open the `.env` file and update the values as needed.
+
+## Running the Project
+
+To start the development server, run the following:
+
+Using npm:
+
+```bash
+npm run dev
+```
+
+Or using yarn:
+
+```bash
+yarn dev
+```
+
+Replace "your-username" and "your-repo-name" with your actual GitHub username and repository name. This section includes detailed steps for installing dependencies, setting up environment variables, and running the project.
+
+
 ## Features
 
 - **Multi-Sector Management:** Efficiently coordinate volunteers across diverse fields such as healthcare, education, social services, animal welfare, disaster relief, child welfare, elderly welfare, and international aid.
