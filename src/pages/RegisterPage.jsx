@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import logo from '../assets/logo.jpg';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../providers/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
@@ -9,7 +8,8 @@ import { Helmet } from 'react-helmet-async';
 
 
 const RegisterPage = () => {
-    const { user, createUser } = useContext(AuthContext);
+    const { createUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSignUp = e => {
         e.preventDefault();
@@ -45,6 +45,8 @@ const RegisterPage = () => {
                 axios.post('https://united-uplift-server.vercel.app/users', user)
                     .then(() => {
                         toast.success("Registration successfull.");
+
+                        navigate('/')    
                     })
             })
             .catch(error => {
